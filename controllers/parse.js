@@ -10,6 +10,7 @@
 exports.getData = (req, res, next) => {
  
     res.setHeader('Content-Type', 'application/json');
+    res.setHeader('Access-Control-Allow-Origin', '*');
 
     //make a new request to the URL provided in the HTTP POST request
     request(req.body.url,  (error, response, responseHtml) => {
