@@ -1,5 +1,5 @@
 {
-  "name": "server",
+  "name": "nodejs-complete-guide",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,14 +8,15 @@
     "start": "node app.js"
   },
   "repository": {
-    "type": "git"
-   
+    "type": "git",
+    "url": "https://git-codecommit.us-east-1.amazonaws.com/v1/repos/udemy-course-nodejs-complete"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.2",
     "cheerio": "^1.0.0-rc.10",
+    "cors": "^2.8.5",
     "express": "^4.17.3",
     "request": "^2.88.2"
   },
