@@ -20,7 +20,10 @@ app.use((req, res, next) => {
     next();
 });
 
-
+app.get('/', (req, res) => {
+    res.send('Server Running!');
+});
+        
 app.use(parser);
 
 app.listen(process.env.PORT || 8080);
