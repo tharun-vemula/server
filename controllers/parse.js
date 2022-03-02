@@ -14,7 +14,7 @@ exports.getData = (req, res, next) => {
 
     //make a new request to the URL provided in the HTTP POST request
     request(req.body.url,  (error, response, responseHtml) => {
-        var res = {};
+        var result = {};
 
         //if  error
         if (error) {
@@ -23,7 +23,7 @@ exports.getData = (req, res, next) => {
         }
 
         //create the cheerio object
-        res = {},
+         result  = {},
             //sets a reference to the document 
             $ = cheerio.load(responseHtml),
             //creates a reference to the meta elements
@@ -36,39 +36,39 @@ exports.getData = (req, res, next) => {
             $images = $('img');
 
         if ($title) {
-            res.title = $title;
+            result.title = $title;
         }
 
         if ($desc) {
-            res.description = $desc;
+            result.description = $desc;
         }
 
         if ($kwd) {
-            res.keywords = $kwd;
+            result.keywords = $kwd;
         }
 
         if ($ogImage && $ogImage.length){
-            res.ogImage = $ogImage;
+            result.ogImage = $ogImage;
         }
 
         if ($ogTitle && $ogTitle.length){
-            res.ogTitle = $ogTitle;
+            result.ogTitle = $ogTitle;
         }
 
         if ($ogkeywords && $ogkeywords.length){
-            res.ogkeywords = $ogkeywords;
+            result.ogkeywords = $ogkeywords;
         }
 
         if ($images && $images.length){
-            res.images = [];
+            result.images = [];
 
             for (var i = 0; i < $images.length; i++) {
-                res.images.push($($images[i]).attr('src'));
+                result.images.push($($images[i]).attr('src'));
             }
         }
 
         //sends the response
-        res.end(JSON.stringify(res));
+        res.end(JSON.stringify(result));
     }) ;
 
 
